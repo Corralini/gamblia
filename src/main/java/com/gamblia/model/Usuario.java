@@ -1,5 +1,7 @@
 package com.gamblia.model;
 
+import com.gamblia.utils.BooleanUtils;
+
 public class Usuario {
     private Integer id;
     private String nombre;
@@ -8,9 +10,10 @@ public class Usuario {
     private String username;
     private String email;
     private String psswd;
-    private String idMesa;
-    private String idRol;
-    private String idCartera;
+    private Integer idMesa;
+    private Integer idRol;
+    private Integer idCartera;
+    private Boolean active;
 
     public Usuario() {
     }
@@ -71,27 +74,35 @@ public class Usuario {
         this.psswd = psswd;
     }
 
-    public String getIdMesa() {
+    public Integer getIdMesa() {
         return idMesa;
     }
 
-    public void setIdMesa(String idMesa) {
+    public void setIdMesa(Integer idMesa) {
         this.idMesa = idMesa;
     }
 
-    public String getIdRol() {
+    public Integer getIdRol() {
         return idRol;
     }
 
-    public void setIdRol(String idRol) {
+    public void setIdRol(Integer idRol) {
         this.idRol = idRol;
     }
 
-    public String getIdCartera() {
+    public Integer getIdCartera() {
         return idCartera;
     }
 
-    public void setIdCartera(String idCartera) {
+    public void setIdCartera(Integer idCartera) {
         this.idCartera = idCartera;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

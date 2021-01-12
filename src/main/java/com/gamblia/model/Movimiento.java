@@ -5,7 +5,7 @@ import java.util.Date;
 public class Movimiento {
     private Integer id;
     private Integer idCarteraOrigen;
-    private Integer idCatertaDestino;
+    private Integer idCarteraDestino;
     private String asunto;
     private Double cantidad;
     private Integer idOperacion;
@@ -30,12 +30,12 @@ public class Movimiento {
         this.idCarteraOrigen = idCarteraOrigen;
     }
 
-    public Integer getIdCatertaDestino() {
-        return idCatertaDestino;
+    public Integer getIdCarteraDestino() {
+        return idCarteraDestino;
     }
 
-    public void setIdCatertaDestino(Integer idCatertaDestino) {
-        this.idCatertaDestino = idCatertaDestino;
+    public void setIdCarteraDestino(Integer idCarteraDestino) {
+        this.idCarteraDestino = idCarteraDestino;
     }
 
     public String getAsunto() {

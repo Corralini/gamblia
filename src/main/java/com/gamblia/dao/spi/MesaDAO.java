@@ -2,6 +2,7 @@ package com.gamblia.dao.spi;
 
 import com.gamblia.model.Mesa;
 import com.gamblia.model.Movimiento;
+import com.gamblia.model.criteria.MesaCriteria;
 
 import java.sql.Connection;
 import java.util.List;
@@ -10,7 +11,7 @@ public interface MesaDAO {
 
     Mesa findById(Connection connection, Integer id);
 
-    List<Mesa> findBy(Connection connection, Mesa mesa);
+    List<Mesa> findBy(Connection connection, MesaCriteria mesaCriteria);
 
     List<Mesa> findAll(Connection connection);
 
