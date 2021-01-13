@@ -1,7 +1,5 @@
 package com.gamblia.dao.spi;
 
-import com.gamblia.model.Cartera;
-import com.gamblia.model.Mesa;
 import com.gamblia.model.Movimiento;
 import com.gamblia.model.criteria.MovimientoCriteria;
 

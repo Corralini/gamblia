@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class UsuarioDAOImpl implements UsuarioDAO {
     private final Logger logger = LogManager.getLogger(UsuarioDAOImpl.class.getName());
@@ -44,10 +45,90 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 if (resultSet.next()) {
                     usuario = loadNext(resultSet);
                 } else {
-                    if (logger.isDebugEnabled()) logger.debug("Operacion {} not found", id);
+                    if (logger.isDebugEnabled()) logger.debug("Usuario {} not found", id);
                 }
                 if (resultSet.next()) {
                     if (logger.isDebugEnabled()) logger.debug("Id {} duplicate", id);
+                }
+
+                return usuario;
+            } catch (SQLException sqlException) {
+                logger.warn(sqlException.getMessage(), sqlException);
+            } finally {
+                JDBCUtils.closeResultSet(resultSet);
+                JDBCUtils.closeStatement(preparedStatement);
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Usuario findByUser(Connection connection, String user) {
+        if (logger.isDebugEnabled())
+            logger.debug("user: {}", user);
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        if (connection != null && user != null) {
+            try {
+                StringBuilder query = new StringBuilder(select).append(" FROM USUARIO WHERE USERNAME = ?");
+                if (logger.isDebugEnabled())
+                    logger.debug(query.toString());
+
+                preparedStatement = connection.prepareStatement(query.toString());
+
+                int i = 1;
+                preparedStatement.setString(i, user.toLowerCase(Locale.ROOT));
+                resultSet = preparedStatement.executeQuery();
+
+                Usuario usuario = null;
+                if (resultSet.next()) {
+                    usuario = loadNext(resultSet);
+                } else {
+                    if (logger.isDebugEnabled()) logger.debug("Usuario {} not found", usuario);
+                }
+                if (resultSet.next()) {
+                    if (logger.isDebugEnabled()) logger.debug("User {} duplicate", user);
+                }
+
+                return usuario;
+            } catch (SQLException sqlException) {
+                logger.warn(sqlException.getMessage(), sqlException);
+            } finally {
+                JDBCUtils.closeResultSet(resultSet);
+                JDBCUtils.closeStatement(preparedStatement);
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Usuario findByEmail(Connection connection, String email) {
+        if (logger.isDebugEnabled())
+            logger.debug("email: {}", email);
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        if (connection != null && email != null) {
+            try {
+                StringBuilder query = new StringBuilder(select).append(" FROM USUARIO WHERE EMAIL = ?");
+                if (logger.isDebugEnabled())
+                    logger.debug(query.toString());
+
+                preparedStatement = connection.prepareStatement(query.toString());
+
+                int i = 1;
+                preparedStatement.setString(i, email.toLowerCase(Locale.ROOT));
+                resultSet = preparedStatement.executeQuery();
+
+                Usuario usuario = null;
+                if (resultSet.next()) {
+                    usuario = loadNext(resultSet);
+                } else {
+                    if (logger.isDebugEnabled()) logger.debug("Usuario {} not found", email);
+                }
+                if (resultSet.next()) {
+                    if (logger.isDebugEnabled()) logger.debug("Email {} duplicate", email);
                 }
 
                 return usuario;
@@ -258,8 +339,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 if (usuario.getNombre() != null) preparedStatement.setString(i++, usuario.getNombre());
                 if (usuario.getApellido1() != null) preparedStatement.setString(i++, usuario.getApellido1());
                 if (usuario.getApellido2() != null) preparedStatement.setString(i++, usuario.getApellido2());
-                if (usuario.getUsername() != null) preparedStatement.setString(i++, usuario.getUsername());
-                if (usuario.getEmail() != null) preparedStatement.setString(i++, usuario.getEmail());
+                if (usuario.getUsername() != null)
+                    preparedStatement.setString(i++, usuario.getUsername().toLowerCase(Locale.ROOT));
+                if (usuario.getEmail() != null)
+                    preparedStatement.setString(i++, usuario.getEmail().toLowerCase(Locale.ROOT));
                 if (usuario.getPsswd() != null) preparedStatement.setString(i++, usuario.getPsswd());
                 if (usuario.getIdMesa() != null) preparedStatement.setInt(i++, usuario.getIdMesa());
                 if (usuario.getIdRol() != null) preparedStatement.setInt(i++, usuario.getIdRol());
@@ -306,8 +389,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 preparedStatement.setString(i++, usuario.getNombre());
                 preparedStatement.setString(i++, usuario.getApellido1());
                 preparedStatement.setString(i++, usuario.getApellido2());
-                preparedStatement.setString(i++, usuario.getUsername());
-                preparedStatement.setString(i++, usuario.getEmail());
+                preparedStatement.setString(i++, usuario.getUsername().toLowerCase(Locale.ROOT));
+                preparedStatement.setString(i++, usuario.getEmail().toLowerCase(Locale.ROOT));
                 preparedStatement.setString(i++, EncryptionUtils.encryptPassword(usuario.getPsswd()));
                 preparedStatement.setInt(i++, usuario.getIdMesa());
                 preparedStatement.setInt(i++, usuario.getIdRol());
@@ -317,7 +400,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 int insertedRows = preparedStatement.executeUpdate();
 
                 if (insertedRows == 0) {
-                    throw new SQLException("Can not add row to table 'Mesa'");
+                    throw new SQLException("Can not add row to table 'Usuario'");
                 }
 
                 resultSet = preparedStatement.getGeneratedKeys();

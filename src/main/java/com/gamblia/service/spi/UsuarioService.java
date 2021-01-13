@@ -15,6 +15,8 @@ public interface UsuarioService {
 
     Usuario update(Usuario usuario);
 
+    Usuario create(Usuario usuario);
+
     Usuario login(String user, String psswd);
 
 }

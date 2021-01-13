@@ -1,7 +1,5 @@
 package com.gamblia.model;
 
-import com.gamblia.utils.BooleanUtils;
-
 public class Usuario {
     private Integer id;
     private String nombre;

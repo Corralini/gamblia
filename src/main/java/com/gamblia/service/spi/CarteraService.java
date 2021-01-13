@@ -3,7 +3,6 @@ package com.gamblia.service.spi;
 import com.gamblia.model.Cartera;
 import com.gamblia.model.criteria.CarteraCriteria;
 
-import java.sql.Connection;
 import java.util.List;
 
 public interface CarteraService {
@@ -15,5 +14,7 @@ public interface CarteraService {
     List<Cartera> findAll();
 
     Cartera update(Cartera cartera);
+
+    Cartera create(Cartera cartera);
 
 }

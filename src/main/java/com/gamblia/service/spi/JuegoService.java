@@ -15,4 +15,6 @@ public interface JuegoService {
     Juego update(Juego juego);
 
     void delete(Integer id);
+
+    Juego create(Juego juego);
 }

@@ -3,7 +3,6 @@ package com.gamblia.service.spi;
 import com.gamblia.model.Mesa;
 import com.gamblia.model.criteria.MesaCriteria;
 
-import java.sql.Connection;
 import java.util.List;
 
 public interface MesaService {
@@ -17,5 +16,7 @@ public interface MesaService {
     Mesa update(Mesa mesa);
 
     void delete(Integer id);
-    
+
+    Mesa create(Mesa mesa);
+
 }

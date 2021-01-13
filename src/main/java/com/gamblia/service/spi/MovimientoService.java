@@ -3,7 +3,6 @@ package com.gamblia.service.spi;
 import com.gamblia.model.Movimiento;
 import com.gamblia.model.criteria.MovimientoCriteria;
 
-import java.sql.Connection;
 import java.util.List;
 
 public interface MovimientoService {
@@ -15,5 +14,7 @@ public interface MovimientoService {
     List<Movimiento> findAll();
 
     Movimiento update(Movimiento movimiento);
+
+    Movimiento create(Movimiento movimiento);
 
 }

@@ -3,7 +3,6 @@ package com.gamblia.service.spi;
 import com.gamblia.model.Rol;
 import com.gamblia.model.criteria.RolCriteria;
 
-import java.sql.Connection;
 import java.util.List;
 
 public interface RolService {
@@ -15,5 +14,7 @@ public interface RolService {
     List<Rol> findAll();
 
     Rol update(Rol rol);
-    
+
+    Rol create(Rol rol);
+
 }

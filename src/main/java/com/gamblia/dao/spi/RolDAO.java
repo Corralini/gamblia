@@ -1,6 +1,5 @@
 package com.gamblia.dao.spi;
 
-import com.gamblia.model.Cartera;
 import com.gamblia.model.Rol;
 import com.gamblia.model.criteria.RolCriteria;
 

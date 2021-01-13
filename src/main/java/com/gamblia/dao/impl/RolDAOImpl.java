@@ -3,7 +3,6 @@ package com.gamblia.dao.impl;
 import com.gamblia.dao.spi.RolDAO;
 import com.gamblia.dao.utils.DAOUtils;
 import com.gamblia.dao.utils.JDBCUtils;
-import com.gamblia.model.Operacion;
 import com.gamblia.model.Rol;
 import com.gamblia.model.criteria.RolCriteria;
 import org.apache.logging.log4j.LogManager;

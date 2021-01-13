@@ -1,6 +1,5 @@
 package com.gamblia.dao.spi;
 
-import com.gamblia.model.Cartera;
 import com.gamblia.model.Operacion;
 import com.gamblia.model.criteria.OperacionCriteria;
 
