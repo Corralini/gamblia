@@ -7,7 +7,7 @@ public class Mesa {
     private Integer idJuego;
     private String psswd;
     private Double apuestaMin;
-    private Integer code;
+    private String code;
 
     public Mesa() {
     }
@@ -60,11 +60,11 @@ public class Mesa {
         this.apuestaMin = apuestaMin;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 }

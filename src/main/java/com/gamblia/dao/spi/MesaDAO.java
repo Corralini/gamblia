@@ -1,7 +1,6 @@
 package com.gamblia.dao.spi;
 
 import com.gamblia.model.Mesa;
-import com.gamblia.model.Movimiento;
 import com.gamblia.model.criteria.MesaCriteria;
 
 import java.sql.Connection;
@@ -18,5 +17,7 @@ public interface MesaDAO {
     Mesa update(Connection connection, Mesa mesa);
 
     void delete(Connection connection, Integer id);
+
+    Mesa create(Connection connection, Mesa mesa);
 
 }

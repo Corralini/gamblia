@@ -1,5 +1,6 @@
 package com.gamblia.dao.spi;
 
+import com.gamblia.model.Cartera;
 import com.gamblia.model.Operacion;
 import com.gamblia.model.criteria.OperacionCriteria;
 
@@ -15,5 +16,7 @@ public interface OperacionDAO {
     List<Operacion> findAll(Connection connection);
 
     Operacion update(Connection connection, Operacion operacion);
+
+    Operacion create(Connection connection, Operacion operacion);
 
 }

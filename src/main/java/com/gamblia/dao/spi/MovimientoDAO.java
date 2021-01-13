@@ -1,13 +1,14 @@
 package com.gamblia.dao.spi;
 
+import com.gamblia.model.Cartera;
+import com.gamblia.model.Mesa;
 import com.gamblia.model.Movimiento;
-import com.gamblia.model.Operacion;
 import com.gamblia.model.criteria.MovimientoCriteria;
 
 import java.sql.Connection;
 import java.util.List;
 
-public interface MovimientosDAO {
+public interface MovimientoDAO {
 
     Movimiento findById(Connection connection, Integer id);
 
@@ -16,5 +17,7 @@ public interface MovimientosDAO {
     List<Movimiento> findAll(Connection connection);
 
     Movimiento update(Connection connection, Movimiento movimiento);
+
+    Movimiento create(Connection connection, Movimiento movimiento);
 
 }

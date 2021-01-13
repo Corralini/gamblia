@@ -1,5 +1,6 @@
 package com.gamblia.dao.spi;
 
+import com.gamblia.model.Cartera;
 import com.gamblia.model.Rol;
 import com.gamblia.model.criteria.RolCriteria;
 
@@ -15,5 +16,7 @@ public interface RolDAO {
     List<Rol> findAll(Connection connection);
 
     Rol update(Connection connection, Rol rol);
+
+    Rol create(Connection connection, Rol rol);
 
 }

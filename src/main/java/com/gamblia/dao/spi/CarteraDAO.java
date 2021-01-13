@@ -16,4 +16,6 @@ public interface CarteraDAO {
 
     Cartera update(Connection connection, Cartera cartera);
 
+    Cartera create(Connection connection, Cartera cartera);
+
 }

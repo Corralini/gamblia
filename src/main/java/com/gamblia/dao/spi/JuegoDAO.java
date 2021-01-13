@@ -1,7 +1,7 @@
 package com.gamblia.dao.spi;
 
+import com.gamblia.model.Cartera;
 import com.gamblia.model.Juego;
-import com.gamblia.model.Mesa;
 import com.gamblia.model.criteria.JuegoCriteria;
 
 import java.sql.Connection;
@@ -18,5 +18,7 @@ public interface JuegoDAO {
     Juego update(Connection connection, Juego juego);
 
     void delete(Connection connection, Integer id);
+
+    Juego create(Connection connection, Juego juego);
 
 }

@@ -1,5 +1,6 @@
 package com.gamblia.dao.spi;
 
+import com.gamblia.model.Cartera;
 import com.gamblia.model.Usuario;
 import com.gamblia.model.criteria.UsuarioCriteria;
 
@@ -15,5 +16,7 @@ public interface UsuarioDAO {
     List<Usuario> findAll (Connection connection);
 
     Usuario update (Connection connection, Usuario usuario);
+
+    Usuario create(Connection connection, Usuario usuario);
 
 }
